@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fertilizer Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Fertilizer Calculator</h1>
+    
+    <label for="area">Select Area Type:</label>
+    <select id="area" onchange="displaySubCategory()">
+      <option value="irrigated">Irrigated Area</option>
+      <option value="rainfed">Rainfed Area</option>
+    </select>
+    
+    <div id="irrigated-options" class="options">
+      <label for="soil-type">Select Soil Type:</label>
+      <select id="soil-type" onchange="calculateFertilizer()">
+        <option value="low-fertile">Low Fertile Soils</option>
+        <option value="medium-fertile">Medium Fertile Soils</option>
+        <option value="fertile">Fertile Soils</option>
+      </select>
+    </div>
+    
+    <div id="rainfed-options" class="options" style="display: none;">
+      <label for="rainfall">Select Rainfall Category:</label>
+      <select id="rainfall" onchange="displayRainfallSubCategory()">
+        <option value="low">Low Rainfall</option>
+        <option value="medium">Medium Rainfall</option>
+        <option value="high">High Rainfall</option>
+      </select>
+      
+      <div id="low-rainfall" class="rainfall-sub" style="display: none;">
+        <label for="low-rainfall-region">Select Region:</label>
+        <select id="low-rainfall-region" onchange="calculateFertilizer()">
+          <option value="rajanpur">Rajanpur</option>
+          <option value="layyah">Layyah</option>
+          <option value="dear-ghazi-khan">Dear Ghazi Khan</option>
+          <option value="muzaffargarh">Muzaffargarh</option>
+          <option value="bhakkar">Bhakkar</option>
+          <option value="mianwali">Mianwali</option>
+          <option value="khushab">Khushab</option>
+          <option value="jand">Jand</option>
+        </select>
+      </div>
+      
+      <div id="medium-rainfall" class="rainfall-sub" style="display: none;">
+        <label for="medium-rainfall-region">Select Region:</label>
+        <select id="medium-rainfall-region" onchange="calculateFertilizer()">
+          <option value="chakwal">Chakwal</option>
+          <option value="talagang">Talagang</option>
+          <option value="pind-dadan-khan">Pind Dadan Khan</option>
+        </select>
+      </div>
+      
+      <div id="high-rainfall" class="rainfall-sub" style="display: none;">
+        <label for="high-rainfall-region">Select Region:</label>
+        <select id="high-rainfall-region" onchange="calculateFertilizer()">
+          <option value="rawalpindi">Rawalpindi</option>
+          <option value="attock">Attock</option>
+          <option value="jhelum">Jhelum</option>
+          <option value="sohawa">Sohawa</option>
+          <option value="narowal">Narowal</option>
+          <option value="gujrat">Gujrat</option>
+          <option value="kharian">Kharian</option>
+          <option value="shakar-garh">Shakar Garh</option>
+        </select>
+      </div>
+    </div>
+    
+    <label for="area-size">Enter Area in Acres:</label>
+    <input type="number" id="area-size" min="1" step="any" placeholder="Enter area in acres" onchange="calculateFertilizer()">
+    
+    <button onclick="calculateFertilizer()">Calculate Fertilizer</button>
+    
+    <div id="results">
+      <h3>Total Fertilizer Requirements (per Acre):</h3>
+      <p><strong>Nitrogen (N): </strong><span id="n-amount"></span> kg/acre</p>
+      <p><strong>Phosphorus (P): </strong><span id="p-amount"></span> kg/acre</p>
+      <p><strong>Potassium (K): </strong><span id="k-amount"></span> kg/acre</p>
+
+      <h3>Fertilizer Sources (for Given Area):</h3>
+      <p><strong>DAP (for P & N): </strong><span id="dap-amount"></span> kg</p>
+      <p><strong>Urea (for N): </strong><span id="urea-amount"></span> kg</p>
+      <p><strong>SOP (for K): </strong><span id="sop-amount"></span> kg</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
